@@ -1,21 +1,28 @@
 ---
 title: Hello, world! I'm LAM MINH HY
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-permalink: ':title/'
-baseurl: "/blog" # the subpath of your site, e.g. /blog
+timezone: UTC
+collections:
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
+description: 'Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for Google search
+  results) and in your feed.xml site description.
+
+'
+permalink: ":title/"
+baseurl: "/blog"
 url: https://sapiens-code.github.io
 domain: sapiens-code.github.io
-site-twitter: #if your site has a twitter account, enter it here
-
-
-# Author Settings
-author: Lâm Minh Hy # add your name
-author-img: my_avata.jpg # add your photo
-about-author: I am a software developer. Love technology, exercise and music. Always hungry to keep learning. # add description
-social-twitter: # add your Twitter handle
+site-twitter: 
+author: Lâm Minh Hy
+author-img: my_avata.jpg
+about-author: I am a software developer. Love technology, exercise and music. Always
+  hungry to keep learning.
+social-twitter: 
 social-facebook: lam.hyminh
 social-github: sapiens-code
 social-linkedin: hy-lam
