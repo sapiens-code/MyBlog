@@ -1,6 +1,7 @@
 ---
-layout: post
 title: Làm thế nào để viết một Revit Macro đơn giản
+date: 2022-02-09 00:00:00 Z
+layout: post
 img: how-to-write-a-macro/ribbon.png
 ---
 

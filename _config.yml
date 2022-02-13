@@ -1,3 +1,4 @@
+---
 title: Hello, world! I'm LAM MINH HY
 description: > # this means to ignore newlines until "baseurl:"
   Write an awesome description for your new site here. You can edit this
@@ -19,20 +20,17 @@ social-facebook: lam.hyminh
 social-github: sapiens-code
 social-linkedin: hy-lam
 social-email: lamminhhy9999@gmail.com
-# Disqus
-discus-identifier: mr-brown # add your discus identifier
-
-# Tracker
-analytics: # Google Analytics
-
-# Build Settings
+discus-identifier: mr-brown
+analytics: 
 markdown: kramdown
 plugins:
-  - jekyll-sitemap
-  - jekyll-paginate
-  - jemoji
-
+- jekyll-sitemap
+- jekyll-paginate
+- jemoji
 paginate: 8
 paginate_path: "/page/:num"
-
-exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
+exclude:
+- node_modules
+- gulpfile.js
+- package.json
+- yarn.lock
