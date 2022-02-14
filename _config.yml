@@ -14,8 +14,8 @@ description: 'Write an awesome description for your new site here. You can edit 
 
 '
 permalink: ":title/"
-baseurl: "/MyBlog"
-url: https://sapiens-code.github.io
+baseurl: ""
+url: https://sapiens-code.github.io/MyBlog
 domain: sapiens-code.github.io
 site-twitter: 
 author: Lâm Minh Hy
