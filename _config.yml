@@ -14,7 +14,7 @@ description: 'Write an awesome description for your new site here. You can edit 
 
 '
 permalink: ":title/"
-baseurl: "/blog"
+baseurl: "/MyBlog"
 url: https://sapiens-code.github.io
 domain: sapiens-code.github.io
 site-twitter: 
