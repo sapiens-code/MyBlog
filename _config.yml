@@ -1,23 +1,14 @@
----
 title: Hello, world! I'm LAM MINH HY
-timezone: UTC
-collections:
-  posts:
-    title: Posts
-    output: true
-  uploads:
-    title: Uploads
-    output: true
-description: 'Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for Google search
-  results) and in your feed.xml site description.
-
-'
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
 permalink: ":title/"
-baseurl: "/MyBlog"
+baseurl: '/MyBlog'
 url: https://sapiens-code.github.io
 domain: sapiens-code.github.io
 site-twitter: 
+
 author: Lâm Minh Hy
 author-img: my_avata.jpg
 about-author: I am a software developer. Love technology, exercise and music. Always
@@ -27,17 +18,19 @@ social-facebook: lam.hyminh
 social-github: sapiens-code
 social-linkedin: hy-lam
 social-email: lamminhhy9999@gmail.com
+
 discus-identifier: mr-brown
+
 analytics: 
+
 markdown: kramdown
+
 plugins:
 - jekyll-sitemap
 - jekyll-paginate
 - jemoji
+
 paginate: 8
 paginate_path: "/page/:num"
-exclude:
-- node_modules
-- gulpfile.js
-- package.json
-- yarn.lock
+
+exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
