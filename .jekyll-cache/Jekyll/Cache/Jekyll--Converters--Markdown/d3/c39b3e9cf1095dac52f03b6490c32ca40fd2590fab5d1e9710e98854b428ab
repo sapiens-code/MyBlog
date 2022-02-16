@@ -1,5 +1,4 @@
-I"�<h2 id="giới-thiệu"><strong>Giới thiệu</strong></h2>
-<p>Xin chào! Hôm nay mình sẽ hướng dẫn cách bắt đầu viết một Macro đơn giản cho phần mềm Revit. Macro là một đoạn mã dùng để tự động hóa một hành động trong Revit như tự động tạo, xóa, sữa các đối tượng, quản lý thông tin của dự án, tư động xuất thông tin dự án vv… Giúp cho công việc của các kỹ sư thiết kế trở nên dễ dàng hơn. Mỗi phiên bản Revit điều đã được tích hợp sẵn Macro vì thế bạn không cần cài đặt thêm bất cứ phần mềm nào. Trong các ví dụ dưới đây mình sẽ sữ dụng revit 2020 và ngôn ngữ c#, giờ chúng ta sẽ bắt đầu đi vào các bước.</p>
+I""<p>Xin chào! Hôm nay mình sẽ hướng dẫn cách viết một Macro đơn giản cho phần mềm Revit. Macro là một đoạn mã dùng để tự động hóa một hành động trong Revit như tự động tạo, xóa, sữa các đối tượng, quản lý thông tin của dự án, tự động xuất thông tin dự án vv… Giúp cho công việc của các kỹ sư thiết kế trở nên dễ dàng hơn. Mỗi phiên bản Revit điều đã được tích hợp sẵn Macro vì thế bạn không cần cài đặt thêm bất cứ phần mềm nào. Trong các ví dụ dưới đây mình sẽ sử dụng revit 2020 và ngôn ngữ c#, giờ chúng ta sẽ bắt đầu đi vào các bước.</p>
 <h2 id="bước-1-mở-revit-macro-manager"><strong>Bước 1: Mở Revit Macro Manager</strong></h2>
 <p>Đầu tiên các bạn vào dự án, sau đó vào tab <strong>Manage</strong> và chọn icon <strong>Macro Manager</strong>.</p>
 
@@ -35,7 +34,7 @@
 
 <p><img src="/assets/img/how-to-write-a-macro/img8.png" alt="img1" /></p>
 
-<p>Nếu có bất kỳ lỗi hay cảnh báo nào chúng sẽ xuất hiện ỡ cửa sổ này.</p>
+<p>Nếu có bất kỳ lỗi hay cảnh báo nào chúng sẽ xuất hiện ở cửa sổ này.</p>
 
 <p><img src="/assets/img/how-to-write-a-macro/img9.png" alt="img1" /></p>
 
@@ -48,7 +47,7 @@
 <p><img src="/assets/img/how-to-write-a-macro/img5.png" alt="img1" /></p>
 
 <h2 id="một-vài-thay-đổi"><strong>Một vài thay đổi</strong></h2>
-<p>Vừa rồi chúng ta vừa tạo được một Macro vô cùng đơn giản trong Revit. Sau đây chúng ta sẽ sữ dụng Macro để can thiệp sâu hơn vào mô hình.</p>
+<p>Vừa rồi chúng ta vừa tạo được một Macro vô cùng đơn giản trong Revit. Sau đây chúng ta sẽ sử dụng Macro để can thiệp sâu hơn vào mô hình.</p>
 <h3 id="get-all-wall">Get All Wall</h3>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public void getAllWall<span class="o">()</span>
 <span class="o">{</span>
@@ -92,6 +91,6 @@
 
 <h2 id="kết">kết</h2>
 <p>Viết macro là bước đầu để tự động hóa những công việc lặp đi lặp lại khi vẽ. Có được kỹ năng lập trình Revit sẽ giúp bạn tăng hiệu xuất làm việc lên rất nhiều nhưng đòi hỏi bạn phải kiên trì thực hành và lấy đi một phần thời gian của bạn để làm chủ được nó. Ngoài viết mã bằng Macro ra bạn cũng có thể sử dụng một công cụ trực quan rất mạnh mẽ là Dynamo hoặc viết Addin cho revit. Những bài viết sau mình sẽ viết thêm về lập trình <strong>Revit Addin</strong> và <strong>Dynamo</strong> cũng như tương tác sâu hơn với hệ thống của Revit.
-Các bạn cũng có thể tìm những Addin hữu dụng trực tiếp trên store của Autodesk. Nếu có bất kỳ thắc mắc gì hãy bình luận bên dưới hoặc liên hệ trực tiếp với mình nhé. Chúc các bạn thành công.</p>
+Các bạn cũng có thể tìm những Addin hữu dụng trực tiếp trên store của Autodesk. Nếu có bất kỳ thắc mắc gì hãy liên hệ trực tiếp với mình nhé. Chúc các bạn thành công.</p>
 
 :ET
