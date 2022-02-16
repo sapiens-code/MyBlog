@@ -2,7 +2,10 @@
 title: Làm thế nào để viết một Revit Macro đơn giản
 date: 2022-02-09 00:00:00 Z
 layout: post
-img: how-to-write-a-macro/ribbon.png
+tag:
+    - Revit Addin
+    - Programming
+img: how-to-write-a-macro/panel.jpg
 ---
 
 Xin chào! Hôm nay mình sẽ hướng dẫn cách viết một Macro đơn giản cho phần mềm Revit. Macro là một đoạn mã dùng để tự động hóa một hành động trong Revit như tự động tạo, xóa, sữa các đối tượng, quản lý thông tin của dự án, tự động xuất thông tin dự án vv... Giúp cho công việc của các kỹ sư thiết kế trở nên dễ dàng hơn. Mỗi phiên bản Revit điều đã được tích hợp sẵn Macro vì thế bạn không cần cài đặt thêm bất cứ phần mềm nào. Trong các ví dụ dưới đây mình sẽ sử dụng revit 2020 và ngôn ngữ c#, giờ chúng ta sẽ bắt đầu đi vào các bước.
