@@ -1,26 +1,26 @@
-I"�<h2 id="giới-thiệu"><strong>Giới thiệu</strong></h2>
+I"�<h2 id="giới-thiệu"><strong>Giới thiệu</strong></h2>
 <p>Xin chào! Hôm nay mình sẽ hướng dẫn cách bắt đầu viết một Macro đơn giản cho phần mềm Revit. Macro là một đoạn mã dùng để tự động hóa một hành động trong Revit như tự động tạo, xóa, sữa các đối tượng, quản lý thông tin của dự án, tư động xuất thông tin dự án vv… Giúp cho công việc của các kỹ sư thiết kế trở nên dễ dàng hơn. Mỗi phiên bản Revit điều đã được tích hợp sẵn Macro vì thế bạn không cần cài đặt thêm bất cứ phần mềm nào. Trong các ví dụ dưới đây mình sẽ sữ dụng revit 2020 và ngôn ngữ c#, giờ chúng ta sẽ bắt đầu đi vào các bước.</p>
 <h2 id="bước-1-mở-revit-macro-manager"><strong>Bước 1: Mở Revit Macro Manager</strong></h2>
 <p>Đầu tiên các bạn vào dự án, sau đó vào tab <strong>Manage</strong> và chọn icon <strong>Macro Manager</strong>.</p>
 
-<p><img src="/MyBlog/assets/img/how-to-write-a-macro/ribbon.png" alt="ribon" /></p>
+<p><img src="/assets/img/how-to-write-a-macro/ribbon.png" alt="ribon" /></p>
 
 <p>Cửa sổ Macro Manager bật lên, bạn sẽ thấy 2 tab là <strong>application</strong> và <strong>tệp dự án</strong> của bạn . Những Macro viết trên tab application sẽ sự dụng được lưu vào cấu hình người dùng của Revit, các Macro này có thể sữ dụng cho bất kỳ mô hình nào nhưng chỉ với người dùng đã tạo nó. Những Macro viết trên tab tệp dự án của bạn có thể sữ dụng cho bất kỳ ai mở mô hình đó.</p>
 
-<p><img src="/MyBlog/assets/img/how-to-write-a-macro/img1.png" alt="img1" /></p>
+<p><img src="/assets/img/how-to-write-a-macro/img1.png" alt="img1" /></p>
 
 <h2 id="bước-2-tạo-module"><strong>Bước 2: Tạo module</strong></h2>
 <p>Các Macro được câu trúc theo dạng <strong>Module</strong>, một Module bao gồm nhiều Macro, tên Module và Macro không được chứa ký tự đặc biệt và khoảng trắng.</p>
 
-<p><img src="/MyBlog/assets/img/how-to-write-a-macro/img7.png" alt="img7" /></p>
+<p><img src="/assets/img/how-to-write-a-macro/img7.png" alt="img7" /></p>
 
 <p>Nhấn nút Module trong phần <strong>Create</strong> để tạo một Module mới. Revit hỗ trợ cho chúng ta 4 ngôn ngữ là C#, Python, Ruby và VB.net. Các bạn nhập tên, chọn ngôn ngữ và nhập mô tả(có thể để trống) cho Module và chọn nút <strong>ok</strong>. Sau đó Revit sẽ tự động tạo và mở file bằng chương trình SharpDevelop. giao diện chường trình như hình dưới.</p>
 
-<p><img src="/MyBlog/assets/img/how-to-write-a-macro/img2.png" alt="img1" /></p>
+<p><img src="/assets/img/how-to-write-a-macro/img2.png" alt="img1" /></p>
 
 <p>Sau khi có Module bạn có thể tạo một Macro bằng cách nhấn vào Module vừa tạo và chọn nút Macro trong phần Create. Bản chất của Macro giống như một hàm(funtion) trong một tệp Module. Hàm là một cấu trúc cơ bản trong các ngôn ngữ lập trình, mình có thể nói về chúng trong các bài viết khác. Sau khi tạo một Macro, chúng sẽ có cấu trúc như hình dưới.</p>
 
-<p><img src="/MyBlog/assets/img/how-to-write-a-macro/img3.png" alt="img1" /></p>
+<p><img src="/assets/img/how-to-write-a-macro/img3.png" alt="img1" /></p>
 
 <p>Theo như trong hình thì Macro của chúng ta là hàm MacroTest() và đó là chỗ chúng ta sẽ viết mã.</p>
 <h2 id="bước-3-viết-mã"><strong>bước 3: Viết mã</strong></h2>
@@ -33,19 +33,19 @@
 <h2 id="bước-4-build"><strong>bước 4: build</strong></h2>
 <p>Sau khi viết xong bạn chọn <strong>build project</strong> trong tab <strong>Build</strong> hoặc nhấp <strong>F9</strong> để build Macro.</p>
 
-<p><img src="/MyBlog/assets/img/how-to-write-a-macro/img8.png" alt="img1" /></p>
+<p><img src="/assets/img/how-to-write-a-macro/img8.png" alt="img1" /></p>
 
 <p>Nếu có bất kỳ lỗi hay cảnh báo nào chúng sẽ xuất hiện ỡ cửa sổ này.</p>
 
-<p><img src="/MyBlog/assets/img/how-to-write-a-macro/img9.png" alt="img1" /></p>
+<p><img src="/assets/img/how-to-write-a-macro/img9.png" alt="img1" /></p>
 
 <p>Nếu ngược lại bạn sẽ thấy dòng chữ <strong>Build finished successfully</strong> ỡ góc trái dưới cùng. Quay lại Revit, chọn macro vừa tạo và nhấn nút <strong>Run</strong>.</p>
 
-<p><img src="/MyBlog/assets/img/how-to-write-a-macro/img4.png" alt="img1" /></p>
+<p><img src="/assets/img/how-to-write-a-macro/img4.png" alt="img1" /></p>
 
 <p>Và đây là kết quả.</p>
 
-<p><img src="/MyBlog/assets/img/how-to-write-a-macro/img5.png" alt="img1" /></p>
+<p><img src="/assets/img/how-to-write-a-macro/img5.png" alt="img1" /></p>
 
 <h2 id="một-vài-thay-đổi"><strong>Một vài thay đổi</strong></h2>
 <p>Vừa rồi chúng ta vừa tạo được một Macro vô cùng đơn giản trong Revit. Sau đây chúng ta sẽ sữ dụng Macro để can thiệp sâu hơn vào mô hình.</p>
@@ -66,7 +66,7 @@
 </code></pre></div></div>
 <p>Đoạn code trên cho phép bạn lấy tên của tất cả các Wall từ dự án hiện tại và in ra màn hình, đây là kết quả.</p>
 
-<p><img src="/MyBlog/assets/img/how-to-write-a-macro/img6.png" alt="img1" /></p>
+<p><img src="/assets/img/how-to-write-a-macro/img6.png" alt="img1" /></p>
 
 <h3 id="delete-all-wall">Delete All Wall</h3>
 <p>Đây là đoạn mã xóa wall từ danh sách đã lấy được ỡ trên</p>
