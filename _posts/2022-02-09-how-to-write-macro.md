@@ -1,5 +1,5 @@
 ---
-title: Làm thế nào để viết một Revit Macro đơn giản
+title: Làm Thế Nào Để Viết Một Revit Macro Đơn Giản
 date: 2022-02-09 00:00:00 Z
 layout: post
 tag:
