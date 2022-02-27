@@ -5,7 +5,7 @@ description: > # this means to ignore newlines until "baseurl:"
   Google search results) and in your feed.xml site description.
 permalink: ":title/"
 baseurl: ''
-url: http://www.thesapiencode.com
+url: https://www.thesapiencode.com
 domain: www.thesapiencode.com
 site-twitter: 
 
