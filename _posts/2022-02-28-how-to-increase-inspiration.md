@@ -65,3 +65,6 @@ Chủ động làm quen và gặp gỡ những người bạn mới, hỏi hạn
 Đôi khi để có cảm hứng, bạn chỉ cần bắt đầu. Cảm hứng là cảm giác và chúng sinh ra khi chúng ta làm việc, vì vậy hãy ngồi xuống và bắt đầu sáng tạo, cảm hứng sẽ đến với bạn.
 # Kết
 Mình vừa giới thiệu qua những cách giúp lấy lại cảm hứng cho bạn. Mỗi cách sẽ phù hợp với từng người khác nhau nên hãy chọn ra cách bạn thích và thử nghiệm nhé. Xin chào tạm biệt và hẹn gặp lại.
+
+### Nguồn Tham Khảo
+https://www.lifehack.org/articles/communication/25-simple-things-you-can-get-inspired.html
