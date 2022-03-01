@@ -4,7 +4,6 @@ date: 2022-02-09 00:00:00 Z
 layout: post
 tag:
     - Revit Addin
-    - Programming
 img: how-to-write-a-macro/panel.jpg
 ---
 
