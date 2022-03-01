@@ -26,7 +26,7 @@ Nhấn nút Module trong phần **Create** để tạo một Module mới. Revit
 
 ![img1](/assets/img/how-to-write-a-macro/img2.png)
 
-Sau khi có Module bạn có thể tạo một Macro bằng cách nhấn vào Module vừa tạo và chọn nút Macro trong phần Create. Bản chất của Macro giống như một hàm(funtion) trong một tệp Module. Hàm là một cấu trúc cơ bản trong các ngôn ngữ lập trình, mình có thể nói về chúng trong các bài viết khác. Sau khi tạo một Macro, chúng sẽ có cấu trúc như hình dưới.
+Sau khi có Module bạn có thể tạo một Macro bằng cách nhấn vào Module vừa tạo và chọn nút Macro trong phần Create. Bản chất của Macro giống như một hàm(function) trong một tệp Module. Hàm là một cấu trúc cơ bản trong các ngôn ngữ lập trình, mình có thể nói về chúng trong các bài viết khác. Sau khi tạo một Macro, chúng sẽ có cấu trúc như hình dưới.
 
 ![img1](/assets/img/how-to-write-a-macro/img3.png)
 

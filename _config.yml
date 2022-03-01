@@ -1,8 +1,6 @@
 title: Hello, world! I'm LAM MINH HY
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+description: mình là Lâm Minh Hy, đây là trang blog cá nhân của mình, viết về mọi thứ mình quan tâm đến, đây như một khu vườn yên tĩnh của mình.
+tagline: đây là một blog của Lâm Minh Hy
 permalink: ":title/"
 baseurl: ''
 url: https://www.thesapiencode.com
@@ -29,6 +27,7 @@ plugins:
 - jekyll-sitemap
 - jekyll-paginate
 - jemoji
+- jekyll-seo-tag
 
 paginate: 8
 paginate_path: "/page/:num"

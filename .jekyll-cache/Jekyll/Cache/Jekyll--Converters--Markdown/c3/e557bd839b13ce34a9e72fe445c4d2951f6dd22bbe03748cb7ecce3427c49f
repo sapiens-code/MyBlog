@@ -1,4 +1,4 @@
-I""<p>Xin chào! Hôm nay mình sẽ hướng dẫn cách viết một Macro đơn giản cho phần mềm Revit. Macro là một đoạn mã dùng để tự động hóa một hành động trong Revit như tự động tạo, xóa, sữa các đối tượng, quản lý thông tin của dự án, tự động xuất thông tin dự án vv… Giúp cho công việc của các kỹ sư thiết kế trở nên dễ dàng hơn. Mỗi phiên bản Revit điều đã được tích hợp sẵn Macro vì thế bạn không cần cài đặt thêm bất cứ phần mềm nào. Trong các ví dụ dưới đây mình sẽ sử dụng revit 2020 và ngôn ngữ c#, giờ chúng ta sẽ bắt đầu đi vào các bước.</p>
+I"#<p>Xin chào! Hôm nay mình sẽ hướng dẫn cách viết một Macro đơn giản cho phần mềm Revit. Macro là một đoạn mã dùng để tự động hóa một hành động trong Revit như tự động tạo, xóa, sữa các đối tượng, quản lý thông tin của dự án, tự động xuất thông tin dự án vv… Giúp cho công việc của các kỹ sư thiết kế trở nên dễ dàng hơn. Mỗi phiên bản Revit điều đã được tích hợp sẵn Macro vì thế bạn không cần cài đặt thêm bất cứ phần mềm nào. Trong các ví dụ dưới đây mình sẽ sử dụng revit 2020 và ngôn ngữ c#, giờ chúng ta sẽ bắt đầu đi vào các bước.</p>
 <h2 id="bước-1-mở-revit-macro-manager"><strong>Bước 1: Mở Revit Macro Manager</strong></h2>
 <p>Đầu tiên các bạn vào dự án, sau đó vào tab <strong>Manage</strong> và chọn icon <strong>Macro Manager</strong>.</p>
 
@@ -17,7 +17,7 @@
 
 <p><img src="/assets/img/how-to-write-a-macro/img2.png" alt="img1" /></p>
 
-<p>Sau khi có Module bạn có thể tạo một Macro bằng cách nhấn vào Module vừa tạo và chọn nút Macro trong phần Create. Bản chất của Macro giống như một hàm(funtion) trong một tệp Module. Hàm là một cấu trúc cơ bản trong các ngôn ngữ lập trình, mình có thể nói về chúng trong các bài viết khác. Sau khi tạo một Macro, chúng sẽ có cấu trúc như hình dưới.</p>
+<p>Sau khi có Module bạn có thể tạo một Macro bằng cách nhấn vào Module vừa tạo và chọn nút Macro trong phần Create. Bản chất của Macro giống như một hàm(function) trong một tệp Module. Hàm là một cấu trúc cơ bản trong các ngôn ngữ lập trình, mình có thể nói về chúng trong các bài viết khác. Sau khi tạo một Macro, chúng sẽ có cấu trúc như hình dưới.</p>
 
 <p><img src="/assets/img/how-to-write-a-macro/img3.png" alt="img1" /></p>
 
