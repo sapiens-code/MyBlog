@@ -1,0 +1,30 @@
+I"�<p>Gần đây mình có làm một dự án chuyển đối tượng từ Cad qua Revit và gặp một só khó khăn. khi bạn viết Revit Addin đôi khi có những dữ liệu bạn muốn nhận từ Autocad để xử lý cho Addin của mình. Thông thường ta có thể viết một Addin phụ trong Cad để xuất thông tin ra file để đọc trong Revit. Nhưng Autodesk còn hỗ trợ cho chúng ta một bộ API rất hữu ích để tương tác trực tiếp với Autocad từ môi trường bên ngoài là <strong>Autocad Interop</strong> sử dụng Active X. Active X cho phép bạn tương tác với cả môi trường bên trong và bên ngoài Autocad. Dưới đây là một số code mẫu mình tìm hiểu được, chạy trong môi trường Revit, viết bằng c#.</p>
+<h2 id="kết-nối-với-autocad-và-lấy-về-active-document">Kết nối với Autocad và lấy về Active Document</h2>
+<p>Để sử dụng bạn phải add hai thư viện là <strong>Autodesk.AutoCAD.Interop</strong> và <strong>Autodesk.AutoCAD.Interop.Common</strong> nằm trong thư mục <strong>C:\Program Files\Autodesk\yourcadversion</strong>.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AcadApplication App <span class="o">=</span> <span class="o">(</span>AcadApplication<span class="o">)</span>Marshal.GetActiveObject<span class="o">(</span>AutoCAD.Application<span class="o">)</span><span class="p">;</span>
+AcadDocument thisDrawing <span class="o">=</span> App.ActiveDocument<span class="p">;</span>
+Message.Show<span class="o">(</span>thisDrawing.FullName<span class="o">)</span><span class="p">;</span>
+</code></pre></div></div>
+<p>Đoạn mã trên sử dụng lớp Marshal để lấy về Instance của chương trình Cad đang chạy. Hãy lưu ý là đang chạy nhé, vì nến không sẽ gây ra lỗi. Sau đó ta lấy về documnet đang mở và in ra tên đầy đủ của documnet đó. bạn cũng có thể mở documnet bằng lệnh <strong>App.Documents.Open(path);</strong>. Dưới đây là sơ đồ tổng quang của Cad Api.
+<img src="/assets/img/how-to-start-activex/sodo.png" alt="img1" /></p>
+<h2 id="thao-tác-với-document">Thao tác với Document</h2>
+<h3 id="lấy-về-tất-cả-entity">Lấy về tất cả Entity</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AcadApplication App <span class="o">=</span> <span class="o">(</span>AcadApplication<span class="o">)</span>Marshal.GetActiveObject<span class="o">(</span>ProgId<span class="o">)</span><span class="p">;</span>
+AcadDocument thisDrawing <span class="o">=</span> App.ActiveDocument<span class="p">;</span>
+AcadModelSpace modelSpace <span class="o">=</span> thisDrawing.ModelSpace<span class="p">;</span>
+<span class="k">for</span> <span class="o">(</span>int i <span class="o">=</span> 0<span class="p">;</span> i &lt; modelSpace.Count<span class="p">;</span> i++<span class="o">)</span>
+<span class="o">{</span>
+    AcadEntity item <span class="o">=</span> modelSpace.Item<span class="o">(</span>i<span class="o">)</span><span class="p">;</span>
+                
+<span class="o">}</span>
+</code></pre></div></div>
+<h3 id="lấy-center-point-của-text">Lấy center point của text</h3>
+<p>``` bash
+private void GetText(AcadEntity item)
+{
+    if (item is AcadText text)
+    {
+        object cMaxP;
+        object cMinP;
+        text.GetBoundingBox(out cMinP, out cMaxP);</p>
+:ET

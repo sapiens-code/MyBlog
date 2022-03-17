@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Tương Tác Với Autocad Từ Revit - Hello, world! I'm LAM MINH HY</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="Hello, world! I'm LAM MINH HY" property="og:site_name">
+  
+    <meta content="Tương Tác Với Autocad Từ Revit" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="mình là Lâm Minh Hy, đây là trang blog cá nhân của mình, viết về mọi thứ mình quan tâm đến, đây như một khu vườn yên tĩnh của mình." property="og:description">
+  
+  
+    <meta content="https://www.thesapiencode.com/how-to-start-activex/" property="og:url">
+  
+  
+    <meta content="2022-03-17T07:00:00+07:00" property="article:published_time">
+    <meta content="https://www.thesapiencode.com/about/" property="article:author">
+  
+  
+    <meta content="https://www.thesapiencode.com/assets/img/how-to-start-activex/autocad-mechanica.jpg" property="og:image">
+  
+  
+    
+  
+  
+    
+    <meta content="Revit Addin" property="article:tag">
+    
+    <meta content="ActiveX" property="article:tag">
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@">
+  
+    <meta name="twitter:title" content="Tương Tác Với Autocad Từ Revit">
+  
+  
+    <meta name="twitter:url" content="https://www.thesapiencode.com/how-to-start-activex/">
+  
+  
+    <meta name="twitter:description" content="mình là Lâm Minh Hy, đây là trang blog cá nhân của mình, viết về mọi thứ mình quan tâm đến, đây như một khu vườn yên tĩnh của mình.">
+  
+  
+    <meta name="twitter:image:src" content="https://www.thesapiencode.com/assets/img/how-to-start-activex/autocad-mechanica.jpg">
+  
+
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicon/apple-touch-icon-144x144.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700|Lato:300,400,700&display=swap" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Tương Tác Với Autocad Từ Revit | Hello, world! I’m LAM MINH HY</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="Tương Tác Với Autocad Từ Revit" />
+<meta name="author" content="Lâm Minh Hy" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Gần đây mình có làm một dự án chuyển đối tượng từ Cad qua Revit và gặp một só khó khăn. khi bạn viết Revit Addin đôi khi có những dữ liệu bạn muốn nhận từ Autocad để xử lý cho Addin của mình. Thông thường ta có thể viết một Addin phụ trong Cad để xuất thông tin ra file để đọc trong Revit. Nhưng Autodesk còn hỗ trợ cho chúng ta một bộ API rất hữu ích để tương tác trực tiếp với Autocad từ môi trường bên ngoài là Autocad Interop sử dụng Active X. Active X cho phép bạn tương tác với cả môi trường bên trong và bên ngoài Autocad. Dưới đây là một số code mẫu mình tìm hiểu được, chạy trong môi trường Revit, viết bằng c#. Kết nối với Autocad và lấy về Active Document Để sử dụng bạn phải add hai thư viện là Autodesk.AutoCAD.Interop và Autodesk.AutoCAD.Interop.Common nằm trong thư mục C:\Program Files\Autodesk\yourcadversion. AcadApplication App = (AcadApplication)Marshal.GetActiveObject(AutoCAD.Application); AcadDocument thisDrawing = App.ActiveDocument; Message.Show(thisDrawing.FullName); Đoạn mã trên sử dụng lớp Marshal để lấy về Instance của chương trình Cad đang chạy. Hãy lưu ý là đang chạy nhé, vì nến không sẽ gây ra lỗi. Sau đó ta lấy về documnet đang mở và in ra tên đầy đủ của documnet đó. bạn cũng có thể mở documnet bằng lệnh App.Documents.Open(path);. Dưới đây là sơ đồ tổng quang của Cad Api. Thao tác với Document Lấy về tất cả Entity AcadApplication App = (AcadApplication)Marshal.GetActiveObject(ProgId); AcadDocument thisDrawing = App.ActiveDocument; AcadModelSpace modelSpace = thisDrawing.ModelSpace; for (int i = 0; i &lt; modelSpace.Count; i++) { AcadEntity item = modelSpace.Item(i); } Lấy center point của text ``` bash private void GetText(AcadEntity item) { if (item is AcadText text) { object cMaxP; object cMinP; text.GetBoundingBox(out cMinP, out cMaxP);" />
+<meta property="og:description" content="Gần đây mình có làm một dự án chuyển đối tượng từ Cad qua Revit và gặp một só khó khăn. khi bạn viết Revit Addin đôi khi có những dữ liệu bạn muốn nhận từ Autocad để xử lý cho Addin của mình. Thông thường ta có thể viết một Addin phụ trong Cad để xuất thông tin ra file để đọc trong Revit. Nhưng Autodesk còn hỗ trợ cho chúng ta một bộ API rất hữu ích để tương tác trực tiếp với Autocad từ môi trường bên ngoài là Autocad Interop sử dụng Active X. Active X cho phép bạn tương tác với cả môi trường bên trong và bên ngoài Autocad. Dưới đây là một số code mẫu mình tìm hiểu được, chạy trong môi trường Revit, viết bằng c#. Kết nối với Autocad và lấy về Active Document Để sử dụng bạn phải add hai thư viện là Autodesk.AutoCAD.Interop và Autodesk.AutoCAD.Interop.Common nằm trong thư mục C:\Program Files\Autodesk\yourcadversion. AcadApplication App = (AcadApplication)Marshal.GetActiveObject(AutoCAD.Application); AcadDocument thisDrawing = App.ActiveDocument; Message.Show(thisDrawing.FullName); Đoạn mã trên sử dụng lớp Marshal để lấy về Instance của chương trình Cad đang chạy. Hãy lưu ý là đang chạy nhé, vì nến không sẽ gây ra lỗi. Sau đó ta lấy về documnet đang mở và in ra tên đầy đủ của documnet đó. bạn cũng có thể mở documnet bằng lệnh App.Documents.Open(path);. Dưới đây là sơ đồ tổng quang của Cad Api. Thao tác với Document Lấy về tất cả Entity AcadApplication App = (AcadApplication)Marshal.GetActiveObject(ProgId); AcadDocument thisDrawing = App.ActiveDocument; AcadModelSpace modelSpace = thisDrawing.ModelSpace; for (int i = 0; i &lt; modelSpace.Count; i++) { AcadEntity item = modelSpace.Item(i); } Lấy center point của text ``` bash private void GetText(AcadEntity item) { if (item is AcadText text) { object cMaxP; object cMinP; text.GetBoundingBox(out cMinP, out cMaxP);" />
+<link rel="canonical" href="https://www.thesapiencode.com/how-to-start-activex/" />
+<meta property="og:url" content="https://www.thesapiencode.com/how-to-start-activex/" />
+<meta property="og:site_name" content="Hello, world! I’m LAM MINH HY" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-17T07:00:00+07:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Tương Tác Với Autocad Từ Revit" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Lâm Minh Hy"},"dateModified":"2022-03-17T07:00:00+07:00","datePublished":"2022-03-17T07:00:00+07:00","description":"Gần đây mình có làm một dự án chuyển đối tượng từ Cad qua Revit và gặp một só khó khăn. khi bạn viết Revit Addin đôi khi có những dữ liệu bạn muốn nhận từ Autocad để xử lý cho Addin của mình. Thông thường ta có thể viết một Addin phụ trong Cad để xuất thông tin ra file để đọc trong Revit. Nhưng Autodesk còn hỗ trợ cho chúng ta một bộ API rất hữu ích để tương tác trực tiếp với Autocad từ môi trường bên ngoài là Autocad Interop sử dụng Active X. Active X cho phép bạn tương tác với cả môi trường bên trong và bên ngoài Autocad. Dưới đây là một số code mẫu mình tìm hiểu được, chạy trong môi trường Revit, viết bằng c#. Kết nối với Autocad và lấy về Active Document Để sử dụng bạn phải add hai thư viện là Autodesk.AutoCAD.Interop và Autodesk.AutoCAD.Interop.Common nằm trong thư mục C:\\Program Files\\Autodesk\\yourcadversion. AcadApplication App = (AcadApplication)Marshal.GetActiveObject(AutoCAD.Application); AcadDocument thisDrawing = App.ActiveDocument; Message.Show(thisDrawing.FullName); Đoạn mã trên sử dụng lớp Marshal để lấy về Instance của chương trình Cad đang chạy. Hãy lưu ý là đang chạy nhé, vì nến không sẽ gây ra lỗi. Sau đó ta lấy về documnet đang mở và in ra tên đầy đủ của documnet đó. bạn cũng có thể mở documnet bằng lệnh App.Documents.Open(path);. Dưới đây là sơ đồ tổng quang của Cad Api. Thao tác với Document Lấy về tất cả Entity AcadApplication App = (AcadApplication)Marshal.GetActiveObject(ProgId); AcadDocument thisDrawing = App.ActiveDocument; AcadModelSpace modelSpace = thisDrawing.ModelSpace; for (int i = 0; i &lt; modelSpace.Count; i++) { AcadEntity item = modelSpace.Item(i); } Lấy center point của text ``` bash private void GetText(AcadEntity item) { if (item is AcadText text) { object cMaxP; object cMinP; text.GetBoundingBox(out cMinP, out cMaxP);","headline":"Tương Tác Với Autocad Từ Revit","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.thesapiencode.com/how-to-start-activex/"},"url":"https://www.thesapiencode.com/how-to-start-activex/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/"><img src="/assets/img/my_avata.jpg" alt="Lâm Minh Hy"></a>
+      </div>
+      <div class="author-name">Lâm Minh Hy</div>
+      <p>I am a software developer. Love technology, exercise and music. Always hungry to keep learning.</p>
+    </div>
+  </header> <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        
+          <li><a href="https://twitter.com/artemsheludko_" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        
+        
+          <li><a href="https://facebook.com/lam.hyminh" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        
+        
+          <li class="github"><a href="http://github.com/sapiens-code" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+          <li class="linkedin"><a href="https://in.linkedin.com/in/hy-lam" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        
+        
+          <li class="email"><a href="mailto:lamminhhy9999@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+        
+      </ul>
+    </section> <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2022 © Lâm Minh Hy</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    <div class="page-cover-image">
+      <figure>
+        <img class="page-image" src="/assets/img/how-to-start-activex/autocad-mechanica.jpg" alt="Tương Tác Với Autocad Từ Revit">
+        
+      </figure>
+    </div> <!-- End Page Cover Image -->
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">Tương Tác Với Autocad Từ Revit</h1>
+        <div class="page-date"><span>2022, Mar 17    </span></div>
+      </header>
+      <p>Gần đây mình có làm một dự án chuyển đối tượng từ Cad qua Revit và gặp một só khó khăn. khi bạn viết Revit Addin đôi khi có những dữ liệu bạn muốn nhận từ Autocad để xử lý cho Addin của mình. Thông thường ta có thể viết một Addin phụ trong Cad để xuất thông tin ra file để đọc trong Revit. Nhưng Autodesk còn hỗ trợ cho chúng ta một bộ API rất hữu ích để tương tác trực tiếp với Autocad từ môi trường bên ngoài là <strong>Autocad Interop</strong> sử dụng Active X. Active X cho phép bạn tương tác với cả môi trường bên trong và bên ngoài Autocad. Dưới đây là một số code mẫu mình tìm hiểu được, chạy trong môi trường Revit, viết bằng c#.</p>
+<h2 id="kết-nối-với-autocad-và-lấy-về-active-document">Kết nối với Autocad và lấy về Active Document</h2>
+<p>Để sử dụng bạn phải add hai thư viện là <strong>Autodesk.AutoCAD.Interop</strong> và <strong>Autodesk.AutoCAD.Interop.Common</strong> nằm trong thư mục <strong>C:\Program Files\Autodesk\yourcadversion</strong>.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AcadApplication App <span class="o">=</span> <span class="o">(</span>AcadApplication<span class="o">)</span>Marshal.GetActiveObject<span class="o">(</span>AutoCAD.Application<span class="o">)</span><span class="p">;</span>
+AcadDocument thisDrawing <span class="o">=</span> App.ActiveDocument<span class="p">;</span>
+Message.Show<span class="o">(</span>thisDrawing.FullName<span class="o">)</span><span class="p">;</span>
+</code></pre></div></div>
+<p>Đoạn mã trên sử dụng lớp Marshal để lấy về Instance của chương trình Cad đang chạy. Hãy lưu ý là đang chạy nhé, vì nến không sẽ gây ra lỗi. Sau đó ta lấy về documnet đang mở và in ra tên đầy đủ của documnet đó. bạn cũng có thể mở documnet bằng lệnh <strong>App.Documents.Open(path);</strong>. Dưới đây là sơ đồ tổng quang của Cad Api.
+<img src="/assets/img/how-to-start-activex/sodo.png" alt="img1"></p>
+<h2 id="thao-tác-với-document">Thao tác với Document</h2>
+<h3 id="lấy-về-tất-cả-entity">Lấy về tất cả Entity</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AcadApplication App <span class="o">=</span> <span class="o">(</span>AcadApplication<span class="o">)</span>Marshal.GetActiveObject<span class="o">(</span>ProgId<span class="o">)</span><span class="p">;</span>
+AcadDocument thisDrawing <span class="o">=</span> App.ActiveDocument<span class="p">;</span>
+AcadModelSpace modelSpace <span class="o">=</span> thisDrawing.ModelSpace<span class="p">;</span>
+<span class="k">for</span> <span class="o">(</span>int i <span class="o">=</span> 0<span class="p">;</span> i &lt; modelSpace.Count<span class="p">;</span> i++<span class="o">)</span>
+<span class="o">{</span>
+    AcadEntity item <span class="o">=</span> modelSpace.Item<span class="o">(</span>i<span class="o">)</span><span class="p">;</span>
+                
+<span class="o">}</span>
+</code></pre></div></div>
+<h3 id="lấy-center-point-của-text">Lấy center point của text</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>private void GetText<span class="o">(</span>AcadEntity item<span class="o">)</span>
+<span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span>item is AcadText text<span class="o">)</span>
+    <span class="o">{</span>
+        object cMaxP<span class="p">;</span>
+        object cMinP<span class="p">;</span>
+        text.GetBoundingBox<span class="o">(</span>out cMinP, out cMaxP<span class="o">)</span><span class="p">;</span>
+
+        var minP <span class="o">=</span> ConvertCadPoint<span class="o">(</span>cMinP as double[]<span class="o">)</span><span class="p">;</span>
+        var maxP <span class="o">=</span> ConvertCadPoint<span class="o">(</span>cMaxP as double[]<span class="o">)</span><span class="p">;</span>
+        //get text center point
+        var centerP <span class="o">=</span> minP.MidPoint<span class="o">(</span>maxP<span class="o">)</span><span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<h3 id="lấy-entity-bằng-cách-chọn-từ-cad">Lấy entity bằng cách chọn từ Cad</h3>
+<p>Bạn có thể lấy entity bằng cách quét chọn trực tiếp từ cad. Ngoài ra, chúng ta có thể filter những đối tượng mà ta muốn chọn. Ở đây mình sẽ lọc ra các Polyline.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AcadSelectionSet <span class="k">select</span> <span class="o">=</span> null<span class="p">;</span>
+try
+<span class="o">{</span>
+    <span class="k">select</span> <span class="o">=</span> ThisDrawing.SelectionSets.Add<span class="o">(</span><span class="s2">"ss2"</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+catch//if selection has exist
+<span class="o">{</span>
+    <span class="k">select</span> <span class="o">=</span> ThisDrawing.SelectionSets.Item<span class="o">(</span><span class="s2">"ss2"</span><span class="o">)</span><span class="p">;</span>
+    <span class="k">select</span>.Clear<span class="o">()</span><span class="p">;</span>
+<span class="o">}</span>
+
+Int16[] FilterType <span class="o">=</span> new Int16[1]<span class="p">;</span>
+object[] FilterData <span class="o">=</span> new object[1]<span class="p">;</span>
+FilterType[0] <span class="o">=</span> 0<span class="p">;</span>
+FilterData[0] <span class="o">=</span> <span class="s2">"LWPolyline,Polyline"</span><span class="p">;</span>
+
+var entities <span class="o">=</span> <span class="k">select</span>.SelectOnScreen<span class="o">(</span>FilterType, FilterData<span class="o">)</span><span class="p">;</span>
+Message.Show<span class="o">(</span>entities.Count<span class="o">())</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Ngoài ra còn rất nhiều tính năng rất hữu ích mà bạn có thể khám phá như vẽ các đối tượng, chạy ngầm CAD… mà mình không thể nêu hết ở đây được. Nếu bạn muốn tìm hiểu thêm thì mình có để link tài liệu bên dưới của Autodesk nhưng được ví dụ băng VBA và AutoLISP nên những bạn sử dụng C# chịu khó ngâm cứu nhé<img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">. Cảm ơn các bạn đã theo dõi.</p>
+
+<p>https://help.autodesk.com/view/OARX/2022/ENU/</p>
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=T%C6%B0%C6%A1ng%20T%C3%A1c%20V%E1%BB%9Bi%20Autocad%20T%E1%BB%AB%20Revit&amp;url=https://www.thesapiencode.com/how-to-start-activex/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=https://www.thesapiencode.com/how-to-start-activex/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=https://www.thesapiencode.com/how-to-start-activex/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+            <a href="/tags#Revit%20Addin" class="tag"># Revit Addin</a>
+          
+            <a href="/tags#ActiveX" class="tag"># ActiveX</a>
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+    <div id="disqus_thread" class="article-comments"></div>
+    <script>
+      (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//mr-brown.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>

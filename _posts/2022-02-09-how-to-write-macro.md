@@ -1,5 +1,5 @@
 ---
-title: Làm Thế Nào Để Viết Một Revit Macro Đơn Giản
+title: Revit Macro là gì? Làm Thế Nào Để Viết Một Revit Macro Đơn Giản
 date: 2022-02-09 00:00:00 Z
 layout: post
 tag:
@@ -101,8 +101,6 @@ public void deleteAllElement()
 }
 ```
 
-
-## kết
 Viết macro là bước đầu để tự động hóa những công việc lặp đi lặp lại khi vẽ. Có được kỹ năng lập trình Revit sẽ giúp bạn tăng hiệu xuất làm việc lên rất nhiều nhưng đòi hỏi bạn phải kiên trì thực hành và lấy đi một phần thời gian của bạn để làm chủ được nó. Ngoài viết mã bằng Macro ra bạn cũng có thể sử dụng một công cụ trực quan rất mạnh mẽ là Dynamo hoặc viết Addin cho revit. Những bài viết sau mình sẽ viết thêm về lập trình **Revit Addin** và **Dynamo** cũng như tương tác sâu hơn với hệ thống của Revit.
 Các bạn cũng có thể tìm những Addin hữu dụng trực tiếp trên store của Autodesk. Nếu có bất kỳ thắc mắc gì hãy liên hệ trực tiếp với mình nhé. Chúc các bạn thành công.
 

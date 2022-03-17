@@ -1,0 +1,62 @@
+I"6<p>Gần đây mình có làm một dự án chuyển đối tượng từ Cad qua Revit và gặp một só khó khăn. khi bạn viết Revit Addin đôi khi có những dữ liệu bạn muốn nhận từ Autocad để xử lý cho Addin của mình. Thông thường ta có thể viết một Addin phụ trong Cad để xuất thông tin ra file để đọc trong Revit. Nhưng Autodesk còn hỗ trợ cho chúng ta một bộ API rất hữu ích để tương tác trực tiếp với Autocad từ môi trường bên ngoài là <strong>Autocad Interop</strong> sử dụng Active X. Active X cho phép bạn tương tác với cả môi trường bên trong và bên ngoài Autocad. Dưới đây là một số code mẫu mình tìm hiểu được, chạy trong môi trường Revit, viết bằng c#.</p>
+<h2 id="kết-nối-với-autocad-và-lấy-về-active-document">Kết nối với Autocad và lấy về Active Document</h2>
+<p>Để sử dụng bạn phải add hai thư viện là <strong>Autodesk.AutoCAD.Interop</strong> và <strong>Autodesk.AutoCAD.Interop.Common</strong> nằm trong thư mục <strong>C:\Program Files\Autodesk\yourcadversion</strong>.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AcadApplication App <span class="o">=</span> <span class="o">(</span>AcadApplication<span class="o">)</span>Marshal.GetActiveObject<span class="o">(</span>AutoCAD.Application<span class="o">)</span><span class="p">;</span>
+AcadDocument thisDrawing <span class="o">=</span> App.ActiveDocument<span class="p">;</span>
+Message.Show<span class="o">(</span>thisDrawing.FullName<span class="o">)</span><span class="p">;</span>
+</code></pre></div></div>
+<p>Đoạn mã trên sử dụng lớp Marshal để lấy về Instance của chương trình Cad đang chạy. Hãy lưu ý là đang chạy nhé, vì nến không sẽ gây ra lỗi. Sau đó ta lấy về documnet đang mở và in ra tên đầy đủ của documnet đó. bạn cũng có thể mở documnet bằng lệnh <strong>App.Documents.Open(path);</strong>. Dưới đây là sơ đồ tổng quang của Cad Api.
+<img src="/assets/img/how-to-start-activex/sodo.png" alt="img1" /></p>
+<h2 id="thao-tác-với-document">Thao tác với Document</h2>
+<h3 id="lấy-về-tất-cả-entity">Lấy về tất cả Entity</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AcadApplication App <span class="o">=</span> <span class="o">(</span>AcadApplication<span class="o">)</span>Marshal.GetActiveObject<span class="o">(</span>ProgId<span class="o">)</span><span class="p">;</span>
+AcadDocument thisDrawing <span class="o">=</span> App.ActiveDocument<span class="p">;</span>
+AcadModelSpace modelSpace <span class="o">=</span> thisDrawing.ModelSpace<span class="p">;</span>
+<span class="k">for</span> <span class="o">(</span>int i <span class="o">=</span> 0<span class="p">;</span> i &lt; modelSpace.Count<span class="p">;</span> i++<span class="o">)</span>
+<span class="o">{</span>
+    AcadEntity item <span class="o">=</span> modelSpace.Item<span class="o">(</span>i<span class="o">)</span><span class="p">;</span>
+                
+<span class="o">}</span>
+</code></pre></div></div>
+<h3 id="lấy-center-point-của-text">Lấy center point của text</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>private void GetText<span class="o">(</span>AcadEntity item<span class="o">)</span>
+<span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span>item is AcadText text<span class="o">)</span>
+    <span class="o">{</span>
+        object cMaxP<span class="p">;</span>
+        object cMinP<span class="p">;</span>
+        text.GetBoundingBox<span class="o">(</span>out cMinP, out cMaxP<span class="o">)</span><span class="p">;</span>
+
+        var minP <span class="o">=</span> ConvertCadPoint<span class="o">(</span>cMinP as double[]<span class="o">)</span><span class="p">;</span>
+        var maxP <span class="o">=</span> ConvertCadPoint<span class="o">(</span>cMaxP as double[]<span class="o">)</span><span class="p">;</span>
+        //get text center point
+        var centerP <span class="o">=</span> minP.MidPoint<span class="o">(</span>maxP<span class="o">)</span><span class="p">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<h3 id="lấy-entity-bằng-cách-chọn-từ-cad">Lấy entity bằng cách chọn từ Cad</h3>
+<p>Bạn có thể lấy entity bằng cách quét chọn trực tiếp từ cad. Ngoài ra, chúng ta có thể filter những đối tượng mà ta muốn chọn. Ở đây mình sẽ lọc ra các Polyline.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AcadSelectionSet <span class="k">select</span> <span class="o">=</span> null<span class="p">;</span>
+try
+<span class="o">{</span>
+    <span class="k">select</span> <span class="o">=</span> ThisDrawing.SelectionSets.Add<span class="o">(</span><span class="s2">"ss2"</span><span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+catch//if selection has exist
+<span class="o">{</span>
+    <span class="k">select</span> <span class="o">=</span> ThisDrawing.SelectionSets.Item<span class="o">(</span><span class="s2">"ss2"</span><span class="o">)</span><span class="p">;</span>
+    <span class="k">select</span>.Clear<span class="o">()</span><span class="p">;</span>
+<span class="o">}</span>
+
+Int16[] FilterType <span class="o">=</span> new Int16[1]<span class="p">;</span>
+object[] FilterData <span class="o">=</span> new object[1]<span class="p">;</span>
+FilterType[0] <span class="o">=</span> 0<span class="p">;</span>
+FilterData[0] <span class="o">=</span> <span class="s2">"LWPolyline,Polyline"</span><span class="p">;</span>
+
+var entities <span class="o">=</span> <span class="k">select</span>.SelectOnScreen<span class="o">(</span>FilterType, FilterData<span class="o">)</span><span class="p">;</span>
+Message.Show<span class="o">(</span>entities.Count<span class="o">())</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Ngoài ra còn rất nhiều tính năng rất hữu ích mà bạn có thể khám phá như vẽ các đối tượng, chạy ngầm CAD… mà mình không thể nêu hết ở đây được. Nếu bạn muốn tìm hiểu thêm thì mình có để link tài liệu bên dưới của Autodesk nhưng được ví dụ băng VBA và AutoLISP nên những bạn sử dụng C# chịu khó ngâm cứu nhé:grin:. Cảm ơn các bạn đã theo dõi.</p>
+
+<p>https://help.autodesk.com/view/OARX/2022/ENU/</p>
+:ET
