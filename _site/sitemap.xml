@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://www.thesapiencode.com/how-to-start-programming/</loc>
-<lastmod>2017-09-12T04:00:00+07:00</lastmod>
-</url>
-<url>
-<loc>https://www.thesapiencode.com/how-to-write-macro/</loc>
+<loc>http://localhost:4000/how-to-write-macro/</loc>
 <lastmod>2022-02-09T07:00:00+07:00</lastmod>
 </url>
 <url>
-<loc>https://www.thesapiencode.com/how-to-increase-inspiration/</loc>
+<loc>http://localhost:4000/how-to-increase-inspiration/</loc>
 <lastmod>2022-03-01T04:00:00+07:00</lastmod>
 </url>
 <url>
-<loc>https://www.thesapiencode.com/how-to-start-activex/</loc>
+<loc>http://localhost:4000/how-to-start-activex/</loc>
 <lastmod>2022-03-17T07:00:00+07:00</lastmod>
 </url>
 <url>
-<loc>https://www.thesapiencode.com/</loc>
+<loc>http://localhost:4000/can-not-create-corss-fitting/</loc>
+<lastmod>2022-04-16T07:00:00+07:00</lastmod>
 </url>
 <url>
-<loc>https://www.thesapiencode.com/tags/</loc>
+<loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tags/</loc>
 </url>
 </urlset>

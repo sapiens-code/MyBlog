@@ -1,0 +1,2 @@
+I"�<p>Xin chào mọi người. Hôm nay mình sẽ nói về cách fix lỗi không tạo được Cross Fitting trong Revit. Thông thường khi tạo cross chúng ra gọi hàm <strong>NewCrossFitting</strong> và truyền vào 4 Connector. Nhưng đôi khi nó throw ra một lỗi rất ức chế với thống báo <strong>Thrown when cross fitting cannot be created</strong> và không có dữ kiện gì thêm nữa, đây là một vấn đề với tài liệu của Revit API.</p>
+:ET
