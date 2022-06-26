@@ -2,6 +2,7 @@
 title: Revit Macro là gì? Làm Thế Nào Để Viết Một Revit Macro Đơn Giản
 date: 2022-02-09 00:00:00 Z
 layout: post
+comments: true
 tag:
     - Revit Addin
 img: how-to-write-a-macro/panel.jpg

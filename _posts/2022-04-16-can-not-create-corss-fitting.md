@@ -2,6 +2,7 @@
 title: Failed To Insert Cross
 date: 2022-04-16 00:00:00 Z
 layout: post
+comments: true
 tag:
     - Revit Addin
 img: can-not-create-cross-fitting/cable-tray.jpg

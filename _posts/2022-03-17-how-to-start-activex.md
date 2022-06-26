@@ -2,10 +2,12 @@
 title: Tương Tác Với Autocad Từ Revit
 date: 2022-03-17 00:00:00 Z
 layout: post
+comments: true
 tag:
     - Revit Addin
     - ActiveX
 img: how-to-start-activex/autocad-mechanica.jpg
+
 ---
 
 Gần đây mình có làm một dự án chuyển đối tượng từ Cad qua Revit và gặp một só khó khăn. khi bạn viết Revit Addin đôi khi có những dữ liệu bạn muốn nhận từ Autocad để xử lý cho Addin của mình. Thông thường ta có thể viết một Addin phụ trong Cad để xuất thông tin ra file để đọc trong Revit. Nhưng Autodesk còn hỗ trợ cho chúng ta một bộ API rất hữu ích để tương tác trực tiếp với Autocad từ môi trường bên ngoài là **Autocad Interop** sử dụng Active X. Active X cho phép bạn tương tác với cả môi trường bên trong và bên ngoài Autocad. Dưới đây là một số code mẫu mình tìm hiểu được, chạy trong môi trường Revit, viết bằng c#.
